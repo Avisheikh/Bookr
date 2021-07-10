@@ -7,6 +7,11 @@ class BookAdmin(admin.ModelAdmin):
     date_hierarchy = 'publication_date'
     list_display = ('title', 'isbn')
     list_filter = ('publisher', 'publication_date')
+    search_fields = ('title','publisher_name')
+
+    def get_publisher(self,obj):
+        return obj.publisher.name
+
 
 def initialled_name(obj):
     """ obj.first_names='Jerome David', obj.last_names='Salinger'
